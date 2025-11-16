@@ -5,6 +5,7 @@
 #include "DataBase.h"
 
 #include <functional>
+#include <iomanip>
 #include <iostream>
 #include <stdexcept>
 
@@ -68,10 +69,15 @@ void DataBase::print_unique_sorted() noexcept {
 
         Employee e(full_name, birthday, gender);
 
-        std::cout << full_name         << " | "
-                  << birthday          << " | "
-                  << gender            << " | age: "
-                  << e.calculate_age() << std::endl;
+        std::cout
+            << std::left << std::setw(25) << full_name
+            << " | "
+            << std::setw(10) << birthday
+            << " | "
+            << std::setw(6)  << gender
+            << " | age: "
+            << std::setw(3)  << e.calculate_age()
+            << '\n';
     }
     sqlite3_finalize(stmt);
 }
